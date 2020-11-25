@@ -1,0 +1,39 @@
+.adapt-points-wrapper {
+  padding: 2px;
+}
+
+.user-infos-flex-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.user-infos-flex-items {
+  color: white;
+  font-size: xx-large;
+  overflow: auto;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.display-sum{
+  font-size: xxx-large;
+  text-align: center;
+  background-color: #d4d4d4;
+  border-radius: 5px;
+  margin: 10px;
+}
+.points-flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.points-flex-item {
+  text-align: center;
+  flex-grow: 1;
+  background-color: #373737;
+  color: white;
+  font-size: xx-large;
+  border: 1px solid #770000;
+  border-radius: 2px;
+  margin: 1px;
+  box-shadow: 0 2px 5px black;
+}

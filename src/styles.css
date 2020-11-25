@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'dom-casual';
+  src: url(assets/fonts/DomCasualBT-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-family: 'supria-sans';
+  src: url(assets/fonts/SupriaSans-CondLight.woff) format("woff");
+}
+
+#wrapper {
+  max-width: 500px;
+  margin: 0 auto 1em auto;
+  background-color: #202020;
+}
+
+body {
+  font-family: 'supria-sans', sans-serif;
+}

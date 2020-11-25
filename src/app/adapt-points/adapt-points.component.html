@@ -1,0 +1,32 @@
+<div class="adapt-points-wrapper">
+
+
+  <div class="user-infos-flex-container">
+    <div class="user-infos-flex-items">Name: {{ selectedPlayer.name }}</div>
+    <div class="user-infos-flex-items">Score: {{ selectedPlayer.score }}</div>
+  </div>
+  <hr>
+  <div class="points-operator">
+    <div class="display-sum">{{ totalPoints }}</div>
+    <div class="points-flex-container">
+      <div (click)="onIncreasePoints(50)" class="points-flex-item">50</div>
+      <div (click)="onIncreasePoints(100)" class="points-flex-item">100</div>
+    </div>
+    <div class="points-flex-container">
+      <div (click)="onIncreasePoints(200)" class="points-flex-item">200</div>
+      <div (click)="onIncreasePoints(300)" class="points-flex-item">300</div>
+      <div (click)="onIncreasePoints(400)" class="points-flex-item">400</div>
+    </div>
+    <div class="points-flex-container">
+      <div (click)="onIncreasePoints(500)" class="points-flex-item">500</div>
+      <div (click)="onIncreasePoints(600)" class="points-flex-item">600</div>
+      <div (click)="onIncreasePoints(1000)" class="points-flex-item">1000</div>
+    </div>
+    <div class="points-flex-container">
+      <div (click)="onAdd()" class="points-flex-item">Add</div>
+      <div (click)="onDoubleScore()" class="points-flex-item">2x</div>
+      <div (click)="onCancel()" class="points-flex-item">Cancel</div>
+      <div class="points-flex-item">Steal</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.nav-icons {
+  font-size: 4rem;
+  padding-left: 5px;
+}
+
+.display {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+nav {
+  margin-bottom: 1rem;
+  background-color: #770000;
+  box-shadow: 0 6px 5px black;
+}
+
+.brand-logo {
+  font-family: 'dom-casual', serif;
+  font-size: xxx-large;
+}

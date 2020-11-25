@@ -1,0 +1,23 @@
+<div >
+  <div class="input-field">
+    <label>
+      <input #element type="text" class="input-field" placeholder="New Name"/>
+    </label>
+  </div>
+
+  <button (click)="createNewGame()">
+    Create new Game
+  </button>
+
+  <div class="player-flex-container">
+    <ul *ngFor="let p of playersList">
+      <li class="player-flex-item">
+        <a [routerLink]="['/adapt-points', p.id]">{{p.name}} - {{p.score}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="add-player-flex-container">
+    <div (click)="onAddPlayer(element.value)" class="add-player-flex-item"><div class="circle"></div></div>
+  </div>
+
+</div>
