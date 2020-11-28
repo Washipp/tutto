@@ -1,23 +1,41 @@
-<div >
-  <div class="input-field">
-    <label>
-      <input #element type="text" class="input-field" placeholder="New Name"/>
-    </label>
+<div>
+  <hr>
+  <div class="new-game-flex-container">
+    <div class="new-game-flex-item">
+      <button class="btn new-game-button" (click)="createNewGame()">
+        <i class="material-icons left">delete_forever</i>
+        Create new Game
+      </button>
+    </div>
+  </div>
+  <hr>
+
+
+
+  <div *ngFor="let p of playersList">
+    <div class="player-flex-container">
+        <a [routerLink]="['/adapt-points', p.id]">
+          <span class="player-flex-item">{{p.name}}:</span>
+          <span class="player-flex-item">{{p.score}}</span>
+        </a>
+
+      <div class="player-flex-item" (click)="onDeletePlayer(p.id)">
+        <i class="material-icons">delete_forever</i>
+      </div>
+
+    </div>
   </div>
 
-  <button (click)="createNewGame()">
-    Create new Game
-  </button>
 
-  <div class="player-flex-container">
-    <ul *ngFor="let p of playersList">
-      <li class="player-flex-item">
-        <a [routerLink]="['/adapt-points', p.id]">{{p.name}} - {{p.score}}</a>
-      </li>
-    </ul>
-  </div>
   <div class="add-player-flex-container">
-    <div (click)="onAddPlayer(element.value)" class="add-player-flex-item"><div class="circle"></div></div>
+    <div class="add-player-flex-item player-name-input">
+      <label>
+        <input [(ngModel)]="newPlayerName" type="text" class="input-field" placeholder="New Player"/>
+      </label>
+    </div>
   </div>
 
+  <div class="add-player-flex-container">
+    <div class="add-player-flex-item" (click)="onAddPlayer()"><div class="circle"></div></div>
+  </div>
 </div>

@@ -1,14 +1,15 @@
-.player-flex-container {
+.new-game-flex-container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
 }
-.player-flex-container ul {
-  margin: 0;
+
+.new-game-button {
+  background-color: #770000;
 }
-.player-flex-item {
-  text-align: center;
-  cursor: pointer;
+
+.player-flex-container {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 2px solid #770000;
   border-radius: 2px;
   background-color: #373737;
@@ -16,10 +17,25 @@
   margin-bottom: 1px;
 }
 
-.player-flex-item a {
+.player-flex-item {
   color: #fff;
   text-transform: uppercase;
   font-size: x-large;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.player-name {
+
+}
+
+.player-score {
+  float: right;
+}
+
+.player-delete {
+  float: right;
 }
 
 .add-player-flex-container {
@@ -32,12 +48,25 @@
   cursor: pointer;
 }
 
+.player-name-input {
+  width: 80%;
+}
+
+.player-name-input input{
+  color:white;
+}
+
+.player-name-input input[type=text]:focus {
+  border-bottom: 1px solid #770608;
+  box-shadow: 0 1px 0 0 #770608;
+}
+
 .circle {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   background-color: #20202000;
-  border: 3px solid #540001;
+  border: 3px solid #770608;
   position: relative;
   box-shadow: 0 0 15px #000;
 
@@ -51,7 +80,7 @@
   content: " ";
   position: absolute;
   display: block;
-  background-color: #540001;
+  background-color: #770608;
   height: 3px;
   margin-top: -1px;
   top: 50%;
@@ -63,7 +92,7 @@
   content: " ";
   position: absolute;
   display: block;
-  background-color: #540001;
+  background-color: #770608;
   width: 3px;
   margin-left: -1px;
   left: 50%;

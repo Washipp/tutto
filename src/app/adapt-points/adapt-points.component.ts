@@ -16,6 +16,7 @@ export class AdaptPointsComponent implements OnInit {
   constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute) {
     this.id = Number(activatedRoute.snapshot.paramMap.get('playerId')); // TODO: check if it actually is a number
     this.totalPoints = 0;
+    this.selectedPlayer = {name: '-', score: 0};
   }
 
   ngOnInit() {

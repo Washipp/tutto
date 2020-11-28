@@ -9,6 +9,7 @@ import { Player, PlayerService } from '../player.service';
 export class LobbyComponent implements OnInit {
 
   title = 'tutto';
+  newPlayerName: string;
   playersList: Array<Player> = [];
 
   ngOnInit() {
@@ -19,8 +20,8 @@ export class LobbyComponent implements OnInit {
 
   constructor(private playerService: PlayerService) {}
 
-  onAddPlayer(name: string) {
-    name = (name === '') ? 'Player' : name;
+  onAddPlayer() {
+    const name = (this.newPlayerName === undefined || this.newPlayerName === '') ? 'Player ' + this.playersList.length : this.newPlayerName;
     const player: Player = {
       name,
       score: 0,
@@ -29,6 +30,7 @@ export class LobbyComponent implements OnInit {
       .then((id) => {
         this.playersList = [...this.playersList, Object.assign({}, player, {id})]; // add new player to list.
       });
+    this.newPlayerName = '';
   }
 
   onUpdatePlayer(id: number, score: number) {
@@ -44,9 +46,18 @@ export class LobbyComponent implements OnInit {
       });
   }
 
+  onDeletePlayer(id: number) {
+    if (confirm('Diesen Spieler entfernen?')) {
+      this.playerService
+        .remove(id)
+        .then(() => {
+          this.playersList = this.playersList.filter((player) => player.id !== id);
+        });
+    }
+  }
+
   createNewGame () {
-    console.log('Create new game: ');
-    if (confirm('Are you sure to delete ')) {
+    if (confirm('Alle Spieler und Punkte löschen?')) {
       this.playerService.dropTable().
       then(() => {
         this.playersList = [];
