@@ -6,7 +6,7 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { AdaptPointsComponent } from './adapt-points/adapt-points.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'lobby', component: LobbyComponent },
@@ -26,11 +26,11 @@ const appRoutes: Routes = [
     AdaptPointsComponent,
     NavigationComponent
   ],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(appRoutes),
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

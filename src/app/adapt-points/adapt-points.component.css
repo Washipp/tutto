@@ -9,14 +9,25 @@
 }
 .user-infos-flex-items {
   color: white;
-  font-size: xx-large;
   overflow: auto;
-  white-space: nowrap;
   text-transform: uppercase;
 }
 
-.display-sum{
-  font-size: larger;
+.name {
+  font-size: x-large;
+  white-space: nowrap;
+}
+
+.score {
+  font-size: xx-large;
+}
+
+.saved-score {
+  color: #808080;
+}
+
+.display-sum {
+  font-size: 2.5em;
   text-align: center;
   background-color: #d4d4d4;
   border-radius: 5px;
@@ -36,4 +47,43 @@
   border-radius: 2px;
   margin: 1px;
   box-shadow: 0 2px 5px black;
+  user-select: none;
+}
+
+/* Modal styles */
+.steal-points-modal {
+  background-color: #6b6b6b;
+  padding: 10px;
+  width: 95%;
+  top: 10%;
+  height: 80%;
+}
+
+.steal-points-modal-cancel {
+  background-color: #770000;
+  margin: 5px;
+}
+
+.steal-points-modal-confirm {
+  background-color: #237700;
+  margin: 5px;
+}
+
+.player-flex-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #770000;
+  border-radius: 2px;
+  background-color: #373737;
+  padding: 5px;
+  margin-bottom: 1px;
+}
+
+.player-flex-item {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: x-large;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
 }

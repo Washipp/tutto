@@ -4,7 +4,7 @@
     <div class="new-game-flex-item">
       <button class="btn new-game-button" (click)="createNewGame()">
         <i class="material-icons left">delete_forever</i>
-        Create new Game
+        Spiel zurücksetzen?
       </button>
     </div>
   </div>
@@ -30,7 +30,7 @@
   <div class="add-player-flex-container">
     <div class="add-player-flex-item player-name-input">
       <label>
-        <input [(ngModel)]="newPlayerName" type="text" class="input-field" placeholder="New Player"/>
+        <input [(ngModel)]="newPlayerName" type="text" class="input-field" placeholder="Neuer Spieler" maxlength="20"/>
       </label>
     </div>
   </div>
