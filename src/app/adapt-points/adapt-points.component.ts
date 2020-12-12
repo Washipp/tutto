@@ -21,13 +21,14 @@ export class AdaptPointsComponent implements OnInit {
   stealingFrom: Player;
   id: number;
   modal: any;
+  emptyPlayer: Player = {name: '-', score: 0};
 
   constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute) {
     // loads id from URL.
     this.id = Number(activatedRoute.snapshot.paramMap.get('playerId')); // TODO: check if it actually is a number
     this.currentPoints = 0;
-    this.selectedPlayer = {name: '-', score: 0};
-    this.stealingFrom = {name: '-', score: 0};
+    this.selectedPlayer = this.emptyPlayer;
+    this.stealingFrom = this.emptyPlayer;
   }
 
   ngOnInit() {
@@ -117,6 +118,7 @@ export class AdaptPointsComponent implements OnInit {
       };
       this.transactions.push(transaction);
       this.tuttoList.push(1000); // display '+ 1000' on app
+      this.stealingFrom = this.emptyPlayer;
     }
   }
 

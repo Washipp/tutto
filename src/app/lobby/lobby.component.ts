@@ -21,7 +21,7 @@ export class LobbyComponent implements OnInit {
   constructor(private playerService: PlayerService) {}
 
   onAddPlayer() {
-    const name = (this.newPlayerName === undefined || this.newPlayerName === '') ? 'Player ' + this.playersList.length : this.newPlayerName;
+    const name = (this.newPlayerName === undefined || this.newPlayerName === '') ? 'SP ' + this.playersList.length : this.newPlayerName;
     const player: Player = {
       name,
       score: 0,
