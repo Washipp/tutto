@@ -1,11 +1,11 @@
 {
-  "name": "tutto",
-  "short_name": "tutto",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Tutto",
+  "short_name": "Tutto",
+  "theme_color": "#ee6e73",
+  "background_color": "#202020",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/tutto/",
+  "start_url": "/tutto/",
   "icons": [
     {
       "src": "assets/favicons/apple-icon-57x57.png",

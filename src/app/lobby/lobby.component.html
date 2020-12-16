@@ -30,7 +30,7 @@
   <div class="add-player-flex-container">
     <div class="add-player-flex-item player-name-input">
       <label>
-        <input [(ngModel)]="newPlayerName" type="text" class="input-field" placeholder="Neuer Spieler" maxlength="20"/>
+        <input [(ngModel)]="newPlayerName" (keyup.enter)="onAddPlayer()" type="text" class="input-field" placeholder="Neuer Spieler" maxlength="20"/>
       </label>
     </div>
   </div>

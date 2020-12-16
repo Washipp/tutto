@@ -2,7 +2,7 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "app",
+      "name": "Tutto",
       "installMode": "prefetch",
       "resources": {
         "files": [
@@ -18,6 +18,9 @@
       "resources": {
         "files": [
           "/assets/**"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/icon?family=Material+Icons"
         ]
       }
     }

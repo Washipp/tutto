@@ -33,19 +33,6 @@ export class LobbyComponent implements OnInit {
     this.newPlayerName = '';
   }
 
-  onUpdatePlayer(id: number, score: number) {
-    this.playerService.getById(id)
-      .then((playerFromDb) => { // load player from db
-        score = score + playerFromDb.score; // update score by combining the score from db and the one to recieve
-        this.playerService.update(id, {score})
-          .then(() => {
-            const playerToUpdate = this.playersList.find((player) => player.id === id); // find the player in the list
-            this.playersList = [...this.playersList.filter(
-              (player) => player.id !== id), Object.assign({}, playerToUpdate, {score})]; // update list
-          });
-      });
-  }
-
   onDeletePlayer(id: number) {
     if (confirm('Diesen Spieler entfernen?')) {
       this.playerService
