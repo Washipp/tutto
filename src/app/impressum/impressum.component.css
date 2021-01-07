@@ -1,0 +1,9 @@
+.imprint {
+  color: white;
+  font-size: large;
+  padding-left: 5px;
+}
+
+.cryptedmail:after {
+  content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+}
