@@ -18,5 +18,11 @@ nav {
 
 .brand-logo {
   font-family: 'dom-casual', serif;
-  font-size: xxx-large;
+  font-size: 3.5rem;
+  display: flex;
+  text-align: center;
+}
+
+.brand-logo img {
+  margin-right: 5px;
 }

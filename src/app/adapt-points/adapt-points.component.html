@@ -4,7 +4,7 @@
   <div class="user-infos-flex-container">
     <div class="user-infos-flex-items name">Name: {{ selectedPlayer.name }}</div>
     <div class="user-infos-flex-items score">
-      Score: <span class="saved-score">{{ selectedPlayer.score }}</span>
+      Punkte: <span class="saved-score">{{ selectedPlayer.score }}</span>
       <span *ngFor="let points of tuttoList">
         + <span>{{ points }}</span>
       </span>
@@ -57,7 +57,7 @@
     </div>
   </div>
   <div class="center-align">
-    <button class="modal-close btn steal-points-modal-cancel">Cancel</button>
-    <button (click)="onModalConfirm()" class="modal-close btn steal-points-modal-confirm">Confirm</button>
+    <button class="modal-close btn steal-points-modal-cancel">Zurück</button>
+    <button (click)="onModalConfirm()" class="modal-close btn steal-points-modal-confirm">Weiter</button>
   </div>
 </div>

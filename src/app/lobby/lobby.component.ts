@@ -43,12 +43,21 @@ export class LobbyComponent implements OnInit {
     }
   }
 
-  createNewGame () {
+  deleteAllPlayers () {
     if (confirm('Alle Spieler und Punkte löschen?')) {
       this.playerService.dropTable().
-      then(() => {
-        this.playersList = [];
-      });
+        then(() => {
+          this.playersList = [];
+        });
+    }
+  }
+
+  resetPoints() {
+    if (confirm('Alle Punkte zurücksetzen?')) {
+      this.playerService.resetPoints().
+        then(() => {
+          this.playersList.forEach(player => player.score = 0);
+        });
     }
   }
 

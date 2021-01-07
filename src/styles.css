@@ -2,11 +2,13 @@
 @font-face {
   font-family: 'dom-casual';
   src: url(assets/fonts/DomCasualBT-Regular.woff) format("woff");
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'supria-sans';
   src: url(assets/fonts/SupriaSans-CondLight.woff) format("woff");
+  font-display: swap;
 }
 
 #wrapper {

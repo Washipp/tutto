@@ -1,10 +1,6 @@
-.new-game-flex-container {
-  display: flex;
-  justify-content: center;
-}
-
-.new-game-button {
-  background-color: #770000;
+.players-list {
+  overflow: auto;
+  /*height: 300px; /* has to be modified according to device height */
 }
 
 .player-flex-container {
@@ -99,4 +95,28 @@
   top:8px;
   bottom: 8px;
   z-index: 9;
+}
+
+.new-game-flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.new-game-flex-item:nth-child(odd) {
+  margin-right: 10px;
+}
+
+.new-game-button {
+  background-color: #373737;
+  border: 2px solid #770000;
+  padding-bottom: 35px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.footer a {
+  color: #929292;
 }

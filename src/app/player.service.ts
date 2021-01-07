@@ -47,4 +47,8 @@ export class PlayerService extends Dexie {
     return this.players.clear();
   }
 
+  resetPoints() {
+    return this.players.where('score').above(0).modify({'score': 0});
+  }
+
 }

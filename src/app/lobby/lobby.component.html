@@ -1,36 +1,22 @@
 <div>
-  <hr>
-  <div class="new-game-flex-container">
-    <div class="new-game-flex-item">
-      <button class="btn new-game-button" (click)="createNewGame()">
-        <i class="material-icons left">delete_forever</i>
-        Spiel zurücksetzen?
-      </button>
-    </div>
-  </div>
-  <hr>
-
-
-
-  <div *ngFor="let p of playersList">
-    <div class="player-flex-container">
-        <a [routerLink]="['/adapt-points', p.id]">
-          <span class="player-flex-item">{{p.name}}:</span>
-          <span class="player-flex-item">{{p.score}}</span>
-        </a>
-
-      <div class="player-flex-item" (click)="onDeletePlayer(p.id)">
-        <i class="material-icons">delete_forever</i>
+  <div class="players-list">
+    <div *ngFor="let p of playersList">
+      <div class="player-flex-container">
+          <a [routerLink]="['/adapt-points', p.id]">
+            <span class="player-flex-item">{{p.name}}:</span>
+            <span class="player-flex-item">{{p.score}}</span>
+          </a>
+        <div class="player-flex-item" (click)="onDeletePlayer(p.id)">
+          <i class="material-icons">delete_forever</i>
+        </div>
       </div>
-
     </div>
   </div>
-
 
   <div class="add-player-flex-container">
     <div class="add-player-flex-item player-name-input">
-      <label>
-        <input [(ngModel)]="newPlayerName" (keyup.enter)="onAddPlayer()" type="text" class="input-field" placeholder="Neuer Spieler" maxlength="20"/>
+      <label for="new-player">
+        <input [(ngModel)]="newPlayerName" (keyup.enter)="onAddPlayer()" type="text" class="input-field" id="new-player" placeholder="Neuer Spieler" maxlength="20"/>
       </label>
     </div>
   </div>
@@ -38,4 +24,25 @@
   <div class="add-player-flex-container">
     <div class="add-player-flex-item" (click)="onAddPlayer()"><div class="circle"></div></div>
   </div>
+  <br>
+  <hr>
+  <div class="new-game-flex-container">
+    <div class="new-game-flex-item">
+      <button class="btn new-game-button" (click)="resetPoints()">
+        <i class="material-icons right">delete_forever</i>
+        Punkte
+      </button>
+    </div>
+    <div class="new-game-flex-item">
+      <button class="btn new-game-button" (click)="deleteAllPlayers()">
+        <i class="material-icons right">delete_forever</i>
+        Spieler
+      </button>
+    </div>
+  </div>
+  <hr>
+
+  <footer class="footer">
+    <a routerLink="/imprint">Impressum</a>
+  </footer>
 </div>
