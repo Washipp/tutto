@@ -6,7 +6,7 @@
             <span class="player-flex-item">{{p.name}}:</span>
             <span class="player-flex-item">{{p.score}}</span>
           </a>
-        <div class="player-flex-item" (click)="onDeletePlayer(p.id)">
+        <div class="player-flex-item" (click)="onDeletePlayer(p.name, p.id)">
           <i class="material-icons">delete_forever</i>
         </div>
       </div>

@@ -33,8 +33,8 @@ export class LobbyComponent implements OnInit {
     this.newPlayerName = '';
   }
 
-  onDeletePlayer(id: number) {
-    if (confirm('Diesen Spieler entfernen?')) {
+  onDeletePlayer(name: string, id: number) {
+    if (confirm(name + ' entfernen?')) {
       this.playerService
         .remove(id)
         .then(() => {
