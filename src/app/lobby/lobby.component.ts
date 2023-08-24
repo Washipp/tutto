@@ -43,12 +43,11 @@ export class LobbyComponent implements OnInit {
     }
   }
 
-  deleteAllPlayers () {
-    if (confirm('Alle Spieler und Punkte löschen?')) {
-      this.playerService.dropTable().
-        then(() => {
-          this.playersList = [];
-        });
+  deleteAllPlayers() {
+    if (confirm('Alle Spieler:innen und Punkte löschen?')) {
+      this.playerService.dropTable().then(() => {
+        this.playersList = [];
+      });
     }
   }
 
