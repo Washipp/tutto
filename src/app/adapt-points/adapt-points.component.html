@@ -1,6 +1,4 @@
 <div class="adapt-points-wrapper">
-
-
   <div class="user-infos-flex-container">
     <div class="user-infos-flex-items name">Name: {{ selectedPlayer.name }}</div>
     <div class="user-infos-flex-items score">
@@ -28,36 +26,16 @@
       <div (click)="onIncreasePoints(1000)" class="points-flex-item">1000</div>
     </div>
     <div class="points-flex-container">
-      <div (click)="onTutto()" class="points-flex-item">Tutto</div>
       <div (click)="onDoubleScore()" class="points-flex-item">2x</div>
+      <div (click)="onTutto()" class="points-flex-item">Tutto</div>
       <div (click)="onReset()" class="points-flex-item">Reset</div>
-      <!-- Modal Trigger -->
-      <!-- Using href in a div tag is not customary but much nicer for styling reasons. This way I can use div -->
-      <div (click)="onSteal()" class="points-flex-item modal-trigger" href="#stealPoints">Stehlen</div>
+      <div (click)="onSteal()" class="points-flex-item" [class.disable-steal]="currentMaxScore == selectedPlayer.score">Stehlen</div>
     </div>
   </div>
   <hr>
   <div class="points-flex-container">
-    <div (click)="onAdd()" class="points-flex-item">Hinzufügen</div>
-    <div (click)="onCancel()" class="points-flex-item">Abbrechen</div>
+    <div (click)="onAdd()" class="points-flex-item">Punkte Hinzufügen</div>
+    <div (click)="onCancel()" class="points-flex-item">Runde Abbrechen</div>
   </div>
 </div>
 
-<!-- Modal Structure -->
-<div id="stealPoints" class="modal steal-points-modal">
-  <div class="modal-content">
-    <h4>
-      <b>{{ selectedPlayer.name }}</b> zieht 1000 Punkt ab von <b>{{ stealingFrom.name }}</b>
-    </h4>
-  </div>
-  <div *ngFor="let p of playersList">
-    <div (click)="stealPoints(p)" class="player-flex-container">
-      <span class="player-flex-item">{{ p.name }}:</span>
-      <span class="player-flex-item">{{ p.score }}</span>
-    </div>
-  </div>
-  <div class="center-align">
-    <button class="modal-close btn steal-points-modal-cancel">Zurück</button>
-    <button (click)="onModalConfirm()" class="modal-close btn steal-points-modal-confirm">Weiter</button>
-  </div>
-</div>

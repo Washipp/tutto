@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Player, PlayerService} from '../player.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 export interface Transaction {
-  stealingFrom: Player;
+  stealingFrom: Player[];
   gaining: Player;
 }
 
@@ -17,24 +17,27 @@ export class AdaptPointsComponent implements OnInit {
   selectedPlayer: Player;
   currentPoints: number;
   tuttoList: Array<number> = [];
-  playersList: Array<Player> = []; // this list is used to steal points.
-  stealingFrom: Player;
   id: number;
-  modal: any;
-  emptyPlayer: Player = {name: '-', score: 0};
+  currentMaxScore = 0;
 
-  constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute) {
+  constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute, private router: Router) {
     // loads id from URL.
     this.id = Number(activatedRoute.snapshot.paramMap.get('playerId')); // TODO: check if it actually is a number
     this.currentPoints = 0;
-    this.selectedPlayer = this.emptyPlayer;
-    this.stealingFrom = this.emptyPlayer;
+    this.selectedPlayer = {name: '-', score: 0};
   }
 
   ngOnInit() {
-    this.playerService.getById(this.id).then((playerFromDb) => { // load user with the provided id. is guaranteed to exist.
+    // load user with the provided id. is guaranteed to exist.
+    this.playerService.getById(this.id).then((playerFromDb) => {
       this.selectedPlayer = playerFromDb!;
     });
+
+    this.playerService.getAll().then(((players: Array<Player>) => {
+      players.forEach((p: Player) => {
+        this.currentMaxScore = p.score > this.currentMaxScore ? p.score : this.currentMaxScore;
+      })
+    }))
   }
 
   onIncreasePoints(points: number) {
@@ -62,6 +65,7 @@ export class AdaptPointsComponent implements OnInit {
         this.tuttoList = [];
         this.currentPoints = 0;
       });
+    this.returnToLobby()
   }
 
   onDoubleScore() {
@@ -76,61 +80,50 @@ export class AdaptPointsComponent implements OnInit {
     this.tuttoList = [];
     this.currentPoints = 0;
     this.transactions = [];
+    this.returnToLobby()
   }
 
   onSteal() {
-    this.loadPlayers();
-    this.loadModal();
-  }
+    if (this.selectedPlayer.score === this.currentMaxScore) return;
+    let max = 0;
+    let stealFrom: Player[] = [];
 
-  loadPlayers() {
-    this.playerService.getAll().then((players: Array<Player>) => { // load all players and delete the current from the list
-      this.playersList = players;
-      this.filterPlayersList();
+    // Load all players with the maximum score
+    this.playerService.getAll().then((players: Array<Player>) => {
+      players.forEach((p: Player) => {
+        max = p.score > max ? p.score : max;
+      })
+
+      players.forEach((p: Player) => {
+        if (p.score === max)stealFrom.push(p);
+      })
     });
-  }
 
-  // Filter players to steal from such that no player with score 0 or the player itself gets display
-  filterPlayersList() {
-    let index = this.playersList.findIndex(player => player.id === this.id); // remove own id
-    this.playersList.splice(index, 1);
-    // remove all players with score = 0
-    index = this.playersList.findIndex(player => player.score === 0);
-    while (index !== -1) {
-      this.playersList.splice(index, 1);
-      index = this.playersList.findIndex(player => player.score === 0);
-    }
-  }
+    // Add new transaction to array. If the player aborts, the transaction will not be executed
+    const transaction = {
+      stealingFrom: stealFrom,
+      gaining: this.selectedPlayer
+    };
+    this.transactions.push(transaction);
 
-  loadModal() {
-    // @ts-ignore
-    this.modal = M.Modal.init(document.querySelectorAll('.modal'));
-  }
-
-  stealPoints(stealingFrom: Player) {
-    this.stealingFrom = stealingFrom;
-  }
-
-  onModalConfirm() {
-    // TODO: if currentPlayer has the most points, can't steal points.
-    if (this.stealingFrom.score > 0) { // no points means, you can't steal or no player is selected
-      const transaction = { // add new transaction to array, such that it can get added after "On Add" Button event
-        stealingFrom: this.stealingFrom,
-        gaining: this.selectedPlayer
-      };
-      this.transactions.push(transaction);
-      this.tuttoList.push(1000); // display '+ 1000' on app
-      this.stealingFrom = this.emptyPlayer;
-    }
+    this.tuttoList.push(1000); // display '+ 1000' on app
   }
 
   finishTransactions() {
-    for (const tran of this.transactions) {
-      let score = tran.gaining.score + 1000; // add points for winning player
-      this.playerService.update(tran.gaining.id!, {score}).then();
-      score = tran.stealingFrom.score - 1000;
-      this.playerService.update(tran.stealingFrom.id!, {score}).then(); // decrease 1000 from player.
-    }
+    this.transactions.forEach((t: Transaction) => {
+      let score = t.gaining.score + 1000; // add points for winning player
+      this.playerService.update(t.gaining.id!, {score}).then();
+      t.stealingFrom.forEach((p: Player) => {
+        // TODO: Stealing twice after a row results in only deducting 1000 points from the player(s)
+        score = p.score - 1000;
+        this.playerService.update(p.id!, {score}).then(); // decrease 1000 from player.
+      })
+
+    })
     this.transactions = []; // empty transaction list
+  }
+
+  private returnToLobby() {
+    this.router.navigate([`./lobby`]).then();
   }
 }
