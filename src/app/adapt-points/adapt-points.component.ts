@@ -33,7 +33,7 @@ export class AdaptPointsComponent implements OnInit {
 
   ngOnInit() {
     this.playerService.getById(this.id).then((playerFromDb) => { // load user with the provided id. is guaranteed to exist.
-      this.selectedPlayer = playerFromDb;
+      this.selectedPlayer = playerFromDb!;
     });
   }
 
@@ -127,9 +127,9 @@ export class AdaptPointsComponent implements OnInit {
   finishTransactions() {
     for (const tran of this.transactions) {
       let score = tran.gaining.score + 1000; // add points for winning player
-      this.playerService.update(tran.gaining.id, {score}).then();
+      this.playerService.update(tran.gaining.id!, {score}).then();
       score = tran.stealingFrom.score - 1000;
-      this.playerService.update(tran.stealingFrom.id, {score}).then(); // decrease 1000 from player.
+      this.playerService.update(tran.stealingFrom.id!, {score}).then(); // decrease 1000 from player.
     }
     this.transactions = []; // empty transaction list
   }

@@ -25,19 +25,19 @@ export class PlayerService extends Dexie {
     return this.players.toArray();
   }
 
-  getById(id) {
+  getById(id: number) {
     return this.players.get(id);
   }
 
-  add(data) {
+  add(data: Player) {
     return this.players.add(data);
   }
 
-  update(id, data) {
+  update(id: number, data: any) {
     return this.players.update(id, data);
   }
 
-  remove(id) {
+  remove(id: number) {
     return this.players.delete(id);
   }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Player, PlayerService } from '../player.service';
+import {Component, OnInit} from '@angular/core';
+import {Player, PlayerService} from '../player.service';
 
 @Component({
   selector: 'app-lobby',
@@ -8,8 +8,7 @@ import { Player, PlayerService } from '../player.service';
 })
 export class LobbyComponent implements OnInit {
 
-  title = 'tutto';
-  newPlayerName: string;
+  newPlayerName: string = '';
   playersList: Array<Player> = [];
 
   ngOnInit() {
@@ -22,9 +21,9 @@ export class LobbyComponent implements OnInit {
   }
 
   onAddPlayer() {
-    const name = (this.newPlayerName === undefined || this.newPlayerName === '') ? 'SP ' + this.playersList.length : this.newPlayerName;
+    const name = (this.newPlayerName === undefined || this.newPlayerName === '') ? 'Gamer ' + this.playersList.length : this.newPlayerName;
     const player: Player = {
-      name,
+      name: name,
       score: 0,
     };
     this.playerService.add(player)
