@@ -2,11 +2,11 @@
   <div class="players-list">
     <div *ngFor="let p of playersList">
       <div class="player-flex-container">
-          <a [routerLink]="['/adapt-points', p.id]">
-            <span class="player-flex-item">{{p.name}}:</span>
-            <span class="player-flex-item">{{p.score}}</span>
-          </a>
-        <div class="player-flex-item" (click)="onDeletePlayer(p.name, p.id)">
+        <a [routerLink]="['/adapt-points', p.id]">
+          <span class="player-flex-item">{{p.name}}:</span>
+          <span class="player-flex-item">{{p.score}}</span>
+        </a>
+        <div class="player-flex-item" (click)="onDeletePlayer(p.name, p.id!)">
           <i class="material-icons">delete_forever</i>
         </div>
       </div>
@@ -16,13 +16,16 @@
   <div class="add-player-flex-container">
     <div class="add-player-flex-item player-name-input">
       <label for="new-player">
-        <input [(ngModel)]="newPlayerName" (keyup.enter)="onAddPlayer()" type="text" class="input-field" id="new-player" placeholder="Neuer Spieler" maxlength="20"/>
+        <input [(ngModel)]="newPlayerName" (keyup.enter)="onAddPlayer()" type="text" class="input-field" id="new-player"
+               placeholder="Spieler:in" maxlength="20"/>
       </label>
     </div>
   </div>
 
   <div class="add-player-flex-container">
-    <div class="add-player-flex-item" (click)="onAddPlayer()"><div class="circle"></div></div>
+    <div class="add-player-flex-item" (click)="onAddPlayer()">
+      <div class="circle"></div>
+    </div>
   </div>
   <br>
   <hr>

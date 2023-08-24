@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import Dexie from 'dexie';
 
 export interface Player {
@@ -6,7 +6,6 @@ export interface Player {
   name: string;
   score: number;
 }
-
 
 @Injectable({
   providedIn: 'root'

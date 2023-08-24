@@ -18,7 +18,8 @@ export class LobbyComponent implements OnInit {
     });
   }
 
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService) {
+  }
 
   onAddPlayer() {
     const name = (this.newPlayerName === undefined || this.newPlayerName === '') ? 'SP ' + this.playersList.length : this.newPlayerName;
@@ -54,10 +55,9 @@ export class LobbyComponent implements OnInit {
 
   resetPoints() {
     if (confirm('Alle Punkte zurücksetzen?')) {
-      this.playerService.resetPoints().
-        then(() => {
-          this.playersList.forEach(player => player.score = 0);
-        });
+      this.playerService.resetPoints().then(() => {
+        this.playersList.forEach(player => player.score = 0);
+      });
     }
   }
 

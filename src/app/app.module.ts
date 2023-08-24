@@ -1,27 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { LobbyComponent } from './lobby/lobby.component';
-import { AdaptPointsComponent } from './adapt-points/adapt-points.component';
-import { RouterModule, Routes } from '@angular/router';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FormsModule } from '@angular/forms';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { ImpressumComponent } from './impressum/impressum.component';
+import {AppComponent} from './app.component';
+import {ImpressumComponent} from './impressum/impressum.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {AdaptPointsComponent} from './adapt-points/adapt-points.component';
+import {LobbyComponent} from './lobby/lobby.component';
+import {RouterModule, Routes} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
-  { path: 'lobby', component: LobbyComponent },
-  { path: 'adapt-points/:playerId', component: AdaptPointsComponent },
-  { path: 'adapt-points', component: AdaptPointsComponent },
-  { path: 'imprint', component: ImpressumComponent},
-  { path: '',
+  {path: 'lobby', component: LobbyComponent},
+  {path: 'adapt-points/:playerId', component: AdaptPointsComponent},
+  {path: 'adapt-points', component: AdaptPointsComponent},
+  {path: 'imprint', component: ImpressumComponent},
+  {
+    path: '',
     redirectTo: '/lobby',
     pathMatch: 'full'
   },
-  { path: '**', component: LobbyComponent }
+  {path: '**', component: LobbyComponent}
 ];
+
 
 @NgModule({
   declarations: [
@@ -40,4 +40,5 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

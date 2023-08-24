@@ -51,7 +51,9 @@ export class AdaptPointsComponent implements OnInit {
   onAdd() {
     let score = this.selectedPlayer.score + this.currentPoints;
     if (this.tuttoList.length !== 0) {
-      score += this.tuttoList.reduce(function (a, b) { return a + b; }); // add all points together
+      score += this.tuttoList.reduce(function (a, b) {
+        return a + b;
+      }); // add all points together
     }
     this.finishTransactions(); // finish potential open stealing transactions.
     this.playerService.update(this.id, {score})

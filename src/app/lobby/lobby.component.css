@@ -48,8 +48,8 @@
   width: 80%;
 }
 
-.player-name-input input{
-  color:white;
+.player-name-input input {
+  color: white;
 }
 
 .player-name-input input[type=text]:focus {
@@ -67,11 +67,13 @@
   box-shadow: 0 0 15px #000;
 
 }
+
 .circle:hover {
   background-color: #383838;
   -webkit-transition: background-color 150ms linear;
   transition: background-color 150ms linear;
 }
+
 .circle::after {
   content: " ";
   position: absolute;
@@ -84,6 +86,7 @@
   right: 8px;
   z-index: 9;
 }
+
 .circle::before {
   content: " ";
   position: absolute;
@@ -92,7 +95,7 @@
   width: 3px;
   margin-left: -1px;
   left: 50%;
-  top:8px;
+  top: 8px;
   bottom: 8px;
   z-index: 9;
 }
